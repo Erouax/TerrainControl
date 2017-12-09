@@ -81,12 +81,12 @@ public class TreeObject implements CustomObject
     }
 
     @Override
-    public boolean process(LocalWorld world, Random random, ChunkCoordinate chunkCoord)
-    {
+    public boolean process(LocalWorld world, Random random, ChunkCoordinate chunkCoord) {
         // A tree has no rarity, so spawn it once in the chunk
         int x = chunkCoord.getBlockXCenter() + random.nextInt(ChunkCoordinate.CHUNK_X_SIZE);
         int z = chunkCoord.getBlockZCenter() + random.nextInt(ChunkCoordinate.CHUNK_Z_SIZE);
-        return spawnAsTree(world, random, x, z);
+
+        return Math.abs(x) > 10 && Math.abs(z) > 10 && spawnAsTree(world, random, x, z);
     }
 
     @Override
